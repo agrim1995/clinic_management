@@ -1,0 +1,453 @@
+1.POST : doctor save
+
+APIURL - http://tutorials.codebetter.in:3000/auth/doctor/save
+
+      Format : JSON
+                   {
+                   
+                     "name": "rohit",
+                     "phoneNumber": "9174635861",
+                     "email": "rohit@gmail.com",
+                     "password": "1234567"
+                   }
+
+*************************************************************************************
+
+2. POST : doctor login
+
+APIURL - http://tutorials.codebetter.in:3000/auth/login
+request data :
+
+{
+    "email":"rohit@gmail.com","password":"1234567"
+}
+
+response data :{
+    "status": true,
+    "data": {
+        "id": 1,
+        "name": "rohit",
+        "phoneNumber": "9174635861",
+        "email": "rohit@gmail.com",
+        "password": "1234567",
+        "createdAt": "2022-12-19T10:06:52.000Z",
+        "updatedAt": "2022-12-19T10:06:52.000Z"
+    },
+    "type": "doctor",
+    "msg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2NzMzNDYxNzYsImV4cCI6MTY3MzM0OTE3Nn0.hEw1TsZG1K3qXnu0gD0qh4OLZQby5Sx7rzL99Tuz1fA"
+}
+
+********************************************************************************************
+
+3. POST : reception login
+
+APIURL - http://tutorials.codebetter.in:3000/auth/login
+
+request data : 
+{
+"email":"rohan@gmail.com", "password":"1234567"
+
+}
+
+response : 
+{
+    "status": true,
+    "data": {
+        "id": 1,
+        "name": "rohan",
+        "phoneNumber": "9174635861",
+        "email": "rohan@gamil.com",
+        "password": "1234567",
+        "raddress": "palasiya",
+        "activeStatus": true,
+        "createdAt": "2022-12-19T10:08:01.000Z",
+        "updatedAt": "2022-12-19T10:08:01.000Z",
+        "doctor": 1
+    },
+    "type": "reception",
+    "msg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2NzMzNDY1NDMsImV4cCI6MTY3MzM0OTU0M30.VDZHD3QMy3y82los3IlOcMmp0L_PIaJJ0PKpAtOYSUU"
+
+
+*********************************************************************************************
+
+4.POST : save new reception
+Authorization : bearer token
+Note : Reception will be update,delete, reception list, and saved only after doctor & reception login.
+
+APIURL - http://tutorials.codebetter.in:3000/api/reception/save
+
+     Format : JSON
+                    {
+                       "name":"soham","phoneNumber":"1234567890","email":"soham@gmail.com","password":"12345678","raddress":"palasiya"
+                    }
+
+   response :
+
+{
+    "status": true,
+    "data": {
+        "activeStatus": true,
+        "id": 4,
+        "name": "ghana",
+        "phoneNumber": "1234567890",
+        "email": "gana@gmail.com",
+        "password": "12345678",
+        "raddress": "palasiya",
+        "doctor": 1,
+        "updatedAt": "2023-01-10T11:06:01.475Z",
+        "createdAt": "2023-01-10T11:06:01.475Z"
+    },
+    "type":"reception"
+    "msg": "reception detail saved"
+}
+
+********************************************************************************************
+5.GET : reception List
+
+APIURL - http://tutorials.codebetter.in:3000/api/reception/lists
+
+response :
+        {
+    "status": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "rohan",
+            "phoneNumber": "9174635861",
+            "email": "rohan@gamil.com",
+            "password": "1234567",
+            "raddress": "palasiya",
+            "activeStatus": true,
+            "doctor": 1
+        },
+        {
+            "id": 2,
+            "name": "soham",
+            "phoneNumber": "9753283712",
+            "email": "soham@gmail.com",
+            "password": "1234567",
+            "raddress": "lig square",
+            "activeStatus": true,
+            "doctor": 1
+        },
+        {
+            "id": 3,
+            "name": "vikas",
+            "phoneNumber": "9617162002",
+            "email": "vikas@gmail.com",
+            "password": "1234567",
+            "raddress": "nandanagar",
+            "activeStatus": true,
+            "doctor": 1
+        },
+        {
+            "id": 10,
+            "name": "ghana",
+            "phoneNumber": "1234567890",
+            "email": "gana@gmail.com",
+            "password": "12345678",
+            "raddress": "palasiya",
+            "activeStatus": true,
+            "doctor": 1
+        }
+    ],
+    "type": "receptions",
+    "msg": "all receptions"
+}
+
+************************************************************************************************
+
+6.PUT : reception deatils Update
+
+APIURL - http://tutorials.codebetter.in:3000/api/reception/updateReception/:id
+
+example 
+http://tutorials.codebetter.in:3000/api/reception/updateReception/194 
+
+
+      Format : JSON
+                   {
+                      "name":"sanjay","password":"12345678","oldPassword":"123456","phoneNumber":"1234567890"
+
+                   }
+
+    response : 
+            {
+    "status": true,
+    "data": {
+        "id": 194,
+        "name": "reception4",
+        "phoneNumber": "8709346576",
+        "email": "reception1@gmail.com",
+        "password": "101010",
+        "raddress": "palasia-123",
+        "activeStatus": true,
+        "createdAt": "2023-08-09T07:55:48.000Z",
+        "updatedAt": "2023-08-10T11:31:31.878Z",
+        "doctor": 249
+    },
+    "type": "reception",
+    "msg": "Reception details updated!"
+}
+                
+************************************************************************************************
+
+
+
+7.PUT : reception delete
+
+APIURL - http://tutorials.codebetter.in:3000/api/reception/delete/3
+
+request format : send reception id in params 
+
+response :
+       {
+    "status": true,
+    "data": {
+        "id": 1,
+        "name": "rohan",
+        "phoneNumber": "9174635861",
+        "email": "rohan@gamil.com",
+        "password": "1234567",
+        "raddress": "palasiya",
+        "activeStatus": false,
+        "createdAt": "2022-12-19T10:08:01.000Z",
+        "updatedAt": "2023-01-10T12:17:08.981Z",
+        "doctor": 1
+    },
+    "type": "reception",
+    "msg": "reception deleted !"
+}
+
+
+***************************************************************************************************
+
+8.GET :All patients list for doctor
+
+APIURL - http://tutorials.codebetter.in:3000/api/patient/list
+
+appointed patient list for reception 
+ 
+APIURL - http://tutorials.codebetter.in:3000/api/patient/lists
+
+Authorization : bearer token
+
+response : 
+         {
+    "status": true,
+    "data": [
+        {
+            "id": 15,
+            "name": "shyam",
+            "sex": "male",
+            "age": "23",
+            "phoneNumber": "4536465456",
+            "daignosis": "leg problem",
+            "appointmentdate": "2023-01-02",
+            "time": "19:04",
+            "activeStatus": true,
+            "doctor_name": 1,
+            "raddress": 2,
+            "address": {
+                "id": 2,
+                "name": "soham",
+                "phoneNumber": "9753283712",
+                "email": "soham@gmail.com",
+                "password": "1234567",
+                "raddress": "lig square",
+                "activeStatus": true,
+                "createdAt": "2022-12-19T10:08:39.000Z",
+                "updatedAt": "2022-12-19T10:08:39.000Z",
+                "doctor": 1
+            }
+        },
+         "type": "patient",
+         "msg": "patients list"
+} 
+
+***************************************************************************************************
+Authorization : bearer token
+Note : patient will be update,delete, reception list, and saved only after doctor & reception login.
+
+9.POST : new patient appointment
+
+APIURL - http://tutorials.codebetter.in:3000/api/patient/addpatient
+
+     request format JSON : {
+                              "name": "rajesh","sex":"male","age":"24","phoneNumber":"9174635861","appointmentdate":"13/11/2022","time":"03:34"
+                           }
+
+    response :
+               {
+    "status": true,
+    "data": {
+        "activeStatus": true,
+        "id": 23,
+        "name": "rajesh",
+        "age": "24",
+        "sex": "male",
+        "phoneNumber": "9174635861",
+        "appointmentdate": "13/11/2022",
+        "time": "03:34",
+        "raddress": 1,
+        "doctor_name": 1,
+        "updatedAt": "2023-01-10T12:23:57.955Z",
+        "createdAt": "2023-01-10T12:23:57.955Z"
+    },
+    "type": "patient",
+    "msg": "patient detail is saved"
+}
+
+****************************************************************************************************
+
+10.PUT : patient detail update
+
+APIURL - http://tutorials.codebetter.in:3000/api/patient/update/6
+
+   request data Format : JSON
+
+                    {
+                       "name":"sanjay","appointmentdate":"15/12/2122","phoneNumber":"1234567890"
+                    }
+
+    response  : 
+{
+    "status": true,
+    "data": {
+        "id": 22,
+        "name": "sanjay",
+        "sex": "female",
+        "age": "21",
+        "phoneNumber": "1234567890",
+        "daignosis": "adadsd",
+        "appointmentdate": "15/12/2122",
+        "time": "23:59",
+        "activeStatus": true,
+        "createdAt": "2023-01-05T13:29:38.000Z",
+        "updatedAt": "2023-01-10T10:48:20.018Z",
+        "doctor_name": 1,
+        "raddress": 2
+    },
+     "type":"patient"
+    "msg": "patient details update !"
+}
+
+***************************************************************************************************
+
+11.DELETE : delete patient
+
+APIURL - http://tutorials.codebetter.in:3000/api/patient/delete/22
+
+request : send id in params
+
+response : 
+          {
+    "status": true,
+    "data": {
+        "id": 22,
+        "name": "sanjay",
+        "sex": "female",
+        "age": "21",
+        "phoneNumber": "1234567890",
+        "daignosis": "adadsd",
+        "appointmentdate": "15/12/2122",
+        "time": "23:59",
+        "activeStatus": true,
+        "createdAt": "2023-01-05T13:29:38.000Z",
+        "updatedAt": "2023-01-10T10:48:20.000Z",
+        "doctor_name": 1,
+        "raddress": 2
+    },
+    "type": "patient",
+    "msg": "patient deleted !"
+}
+          
+**************************************************************************************************
+
+12.PUT : patient appointment done
+
+APIURL - http://tutorials.codebetter.in:3000/api/patient/done/2
+
+request : send id in params
+
+response :
+         {
+    "status": true,
+    "data": {
+        "id": 20,
+        "name": "radhika",
+        "sex": "female",
+        "age": "34",
+        "phoneNumber": "6578943256",
+        "daignosis": "wdqwe",
+        "appointmentdate": "2023-01-02",
+        "time": "21:09",
+        "activeStatus": false,
+        "doctor_name": 1,
+        "raddress": 2,
+        "address": {
+            "id": 2,
+            "name": "soham",
+            "phoneNumber": "9753283712",
+            "email": "soham@gmail.com",
+            "password": "1234567",
+            "raddress": "lig square",
+            "activeStatus": true,
+            "createdAt": "2022-12-19T10:08:39.000Z",
+            "updatedAt": "2022-12-19T10:08:39.000Z",
+            "doctor": 1
+        }
+    },
+    "type": "patient",
+    "msg": "patient detail update"
+}
+
+
+****************************************************************************************************
+
+
+13.PUT : patient appointment undo
+
+APIURL - http://tutorials.codebetter.in:3000/api/patient/undo/2
+
+request : send id in params
+
+response :
+         {
+    "status": true,
+    "data": {
+        "id": 20,
+        "name": "radhika",
+        "sex": "female",
+        "age": "34",
+        "phoneNumber": "6578943256",
+        "daignosis": "wdqwe",
+        "appointmentdate": "2023-01-02",
+        "time": "21:09",
+        "activeStatus": true,
+        "doctor_name": 1,
+        "raddress": 2,
+        "address": {
+            "id": 2,
+            "name": "soham",
+            "phoneNumber": "9753283712",
+            "email": "soham@gmail.com",
+            "password": "1234567",
+            "raddress": "lig square",
+            "activeStatus": true,
+            "createdAt": "2022-12-19T10:08:39.000Z",
+            "updatedAt": "2022-12-19T10:08:39.000Z",
+            "doctor": 1
+        },
+        "updatedAt": "2023-01-10T12:36:20.667Z"
+    },
+    "type": "patient",
+    "msg": "patient detail update"
+}
+
+****************************************************************************************************
+
+
+
+
+

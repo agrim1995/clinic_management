@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "clinicmanagementuser",
+    "password": "clinicmanagement123",
+    "database": "clinicmanagement",
+    "host": "195.35.20.207",
+    "dialect": "mysql",
+    "login" : "true"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "clinicuser",
+    "password": "toorpass",
+    "database": "clinic",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
